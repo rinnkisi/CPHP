@@ -1,6 +1,5 @@
 
-<?php 
-if(isset($have)):foreach($have as $values):?>
+<?php if(isset($have)):foreach($have as $values):?>
 	<table>
 	<?php 	foreach($values as $key=>$value): ?>
 		<tr>

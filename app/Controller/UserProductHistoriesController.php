@@ -8,6 +8,11 @@ class UserProductHistoriesController extends AppController
 		$api = new iStyleAPI('members/3578098/have_products',array('id'=>'3578098'));
 		$this->set('have',$api->getHave('3578098')['result']);
 	}
+	public function edit()
+	{
+		$api = new iStyleAPI('members/3578098/have_products',array('id'=>'3578098'));
+		$this->set('have',$api->getHave('3578098')['result']);
+	}
 
 }
 
