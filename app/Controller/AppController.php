@@ -33,8 +33,8 @@ App::uses('Controller', 'Controller');
 class AppController extends Controller {
     Public function product_mail(){
         $month = array('31','28','31','30','31','30','31','31','30','31','30','31');
-        $frequency = '80'; // 使用頻度
-        $cryptodate = '0412'; //使用開始日
+        $frequency = '65'; // 使用頻度
+        $cryptodate = '0612'; //使用開始日
         debug($cryptodate);
         $start_month = substr($cryptodate,0,2); //使用開始月をとってくる(文字の先頭2文字)
         debug($start_month);
@@ -43,15 +43,32 @@ class AppController extends Controller {
         $tmp = 0;//一時変数
         foreach ($month as $key => $value) {//使用開始日を日数にする処理
             $tmp = $tmp + $value;
-            if($key == ($start_month-2)){
+            if($key == ($start_month - 2)){
                 $date = $tmp + $start_day;
                 debug($date);
             }
         }
         $frequency = $frequency - 7;//7は一週間前に通知するために
         debug($frequency);
+        $depletion_date = $frequency + $date;//商品枯渇日に代入
+        debug($depletion_date);
         $today = date("m/d");
         debug($today);
-
+        $today_month = substr($today,0,2); //現在時間をとってくる(文字の先頭2文字)
+        debug($today_month);
+        $today_day = substr($today,-2); //現在時間の日をとってくる(文字の先頭2文字)
+        debug($today_day);
+        $tmp = 0;//初期化
+        foreach ($month as $key => $value) {//現在時間を日数にする処理
+            $tmp = $tmp + $value;
+            if($key == ($today_month - 2)){
+                $today_date = $tmp + $today_day;
+                debug($today_date);
+            }
+        }
+        $judge = $depletion_date - $today_date;//判定用(商品枯渇日数　- 今日の日数)
+        if($judge <= 0){
+            echo "メール送信";
+        }
     }
 }
