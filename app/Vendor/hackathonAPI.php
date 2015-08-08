@@ -1,7 +1,4 @@
 <?php
-$api = new iStyleAPI('members/3578098/have_products',array('id'=>'3578098'));
-//echo $api->getUserID('3578098');
-$api->getHave('3578098');
 
 class iStyleAPI{
 	public $client_id='21624159027110b37d9248dd075851ffa9504cdd97c9c6a7daec6b662dc0b2b3';
@@ -27,7 +24,7 @@ class iStyleAPI{
 	{
 		$URL='https://pf-api.cosme.net/cosme/v1/members/'.$this->getUserID($id).'/have_products?client_id='.$this->client_id;
 		$res = $this->getContents($URL);
-		var_dump($res);
+		return $res;
 	}
 	private function getContents($URL)
 	{
