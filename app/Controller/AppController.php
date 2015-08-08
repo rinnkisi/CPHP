@@ -31,4 +31,27 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+    Public function product_mail(){
+        $month = array('31','28','31','30','31','30','31','31','30','31','30','31');
+        $frequency = '80'; // 使用頻度
+        $cryptodate = '0412'; //使用開始日
+        debug($cryptodate);
+        $start_month = substr($cryptodate,0,2); //使用開始月をとってくる(文字の先頭2文字)
+        debug($start_month);
+        $start_day = substr($cryptodate,-2); //使用開始日をとってくる(文字の先頭2文字)
+        debug($start_day);
+        $tmp = 0;//一時変数
+        foreach ($month as $key => $value) {//使用開始日を日数にする処理
+            $tmp = $tmp + $value;
+            if($key == ($start_month-2)){
+                $date = $tmp + $start_day;
+                debug($date);
+            }
+        }
+        $frequency = $frequency - 7;//7は一週間前に通知するために
+        debug($frequency);
+        $today = date("m/d");
+        debug($today);
+
+    }
 }
