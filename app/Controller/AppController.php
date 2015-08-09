@@ -32,7 +32,7 @@ App::uses('CakeEmail', 'Network/Email');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
- 
+
     Public function product_mail(){
         $month = array('31','28','31','30','31','30','31','31','30','31','30','31');
         $frequency = '65'; // 使用頻度
@@ -77,6 +77,6 @@ class AppController extends Controller {
             ->subject('商品発送についてのご連絡')
             ->send('テスト');*/
 
-            return true;
+        return true;
     }
 }
