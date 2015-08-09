@@ -60,7 +60,7 @@ class AppController extends Controller {
         }
         $judge = $depletion_date - $today_date;//判定用(商品枯渇日数　- 今日の日数)
         if($judge <= 0){
-            echo "メール送信";
+            //echo "メール送信";
             $mail = new CakeEmail('hackathon');
             /*$mail->to('kuroisiratama@yahoo.co.jp')//->to('rinnkisi40@gmail.com')
                 ->subject('商品発送についてのご連絡')
