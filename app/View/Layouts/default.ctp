@@ -34,6 +34,19 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
+	<style type="text/css">
+	.slider{margin:0; padding:0;}
+	</style>
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+	<script>
+  $(function() {
+    $( ".slider" ).slider({min:0,max:365,
+    	slide: function(event,ui){$('.'+$(this).attr("id")).val(ui.value); }
+    });
+  });
+  </script>
 </head>
 <body>
 	<div id="container">
