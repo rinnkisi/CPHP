@@ -1,3 +1,4 @@
+<h3>継続購入するものを選択してください。</h3>
 <?php echo $this->Form->create('UserProductHistories',array('action'=>'edit')); ?>
 <?php if(isset($have)):foreach($have as $values):?>
 	<table>
