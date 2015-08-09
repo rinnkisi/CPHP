@@ -46,8 +46,8 @@ h1, h2, h3, h4 {
 	margin-bottom:0.5em;
 }
 h1 {
-	background:#fff;
-	color: #000000;
+	background:#000;
+	color: #FFF;
 	font-size: 100%;
 }
 h2 {
@@ -109,9 +109,10 @@ p {
 #footer {
 	clear: both;
 	padding: 6px 10px;
+	text-align: center;
 }
 #header a, #footer a {
-	color: #fff;
+	color: #000;
 }
 #cake-powered {
 	float: right;

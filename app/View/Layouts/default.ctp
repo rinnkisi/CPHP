@@ -44,9 +44,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			<?php echo $this->Session->flash(); ?>
 			<?php echo $this->fetch('content'); ?>
 		</div>
-		<center>
-			<h1><?php echo "copyright(c) All rights reserved けーきぴーえいちぴー"; ?></h1>
-		</center>
+		<div id ="footer">
+			<h1><?php echo "Copyright © 2015 けーきぴーえいちぴー All Rights Reserved."; ?></h1>
+		</div>
 	</div>
 </body>
 </html>
