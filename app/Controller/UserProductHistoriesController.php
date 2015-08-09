@@ -34,12 +34,17 @@ class UserProductHistoriesController extends AppController
 		if(isset($this->request->data))
 			var_dump($this->request->data);
 $data = array();
-foreach($this->request->data['UserProductHistories'] as $productID=>$value)
-$data[] = array(
-'userid' =>'3578098',
-'productid'=>$productID,
-'frequency'=>$value
-				);
+foreach($this->request->data['frequency'] as $productID=>$value)
+{
+	$data[] = array(
+					'userid' =>'3578098',
+					'productid'=>$productID,
+					'frequency'=>$value
+					);
+	foreach($this->request->data['start'] as $date=>$time);
+}
+	
+
 	var_dump($data)	;
 		$this->UserProductHistory->saveAll($data);
 
