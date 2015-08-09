@@ -76,7 +76,7 @@ class AppController extends Controller {
 		/*$mail->to('kuroisiratama@yahoo.co.jp')//->to('rinnkisi40@gmail.com')
 			->subject('商品発送についてのご連絡')
 			->send('テスト');*/
-            
-			return true;
+
+		return true;
     }
 }
