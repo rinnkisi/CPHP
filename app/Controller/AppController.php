@@ -33,13 +33,13 @@ App::uses('CakeEmail', 'Network/Email');
  */
 class AppController extends Controller {
 
-    Public function product_mail(){
+    Public function product_mail($user_id=23111,$product_id=271119,$frequency=
+    60,$cryptodate="0612"){
         $month = array('31','28','31','30','31','30','31','31','30','31','30','31');
-        $frequency = '65'; // 使用頻度
-        $cryptodate = '0612'; //使用開始日
         $start_month = substr($cryptodate,0,2); //使用開始月をとってくる(文字の先頭2文字)
         $start_day = substr($cryptodate,-2); //使用開始日をとってくる(文字の先頭2文字)
         $tmp = 0;//一時変数
+        $date = 0;
         foreach ($month as $key => $value) {//使用開始日を日数にする処理
             $tmp = $tmp + $value;
             if($key == ($start_month - 2)){
@@ -60,12 +60,26 @@ class AppController extends Controller {
         }
         $judge = $depletion_date - $today_date;//判定用(商品枯渇日数　- 今日の日数)
         if($judge <= 0){
-            //echo "メール送信";
-            $mail = new CakeEmail('hackathon');
-            /*$mail->to('kuroisiratama@yahoo.co.jp')//->to('rinnkisi40@gmail.com')
-                ->subject('商品発送についてのご連絡')
-                ->send('テスト');*/
+            $message = <<<MAIL
+            {$user_id} 様
+            今回はけーきぴーえいちぴーをご利用いただき、ありがとうございます。
 
+            ご登録いただきました商品の消耗期限が近づいてまいります。
+
+            以下のリンクから商品のご注文を確定するか、商品期限のご延長をお願いいたします。
+
+http://ver1.black/CPHP/user_product_histories/agree?id={$product_id}
+
+            期日中にご注文が確定されない場合には自動で商品期限2週間延長されますので、
+            ご了承くださいませ。
+            ― お問い合わせフォーム ―
+            　　-適当なメールアドレス-
+            ※本メールは送信専用のアドレスよりお送りしております。
+MAIL;
+            $mail = new CakeEmail('hackathon');
+            $mail->to('kuroisiratama@yahoo.co.jp')//->to('rinnkisi40th@gmail.com')
+                ->subject('商品発注についてのご連絡')
+                ->send($message);
             return true;
         }
     }
