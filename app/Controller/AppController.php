@@ -34,11 +34,12 @@ App::uses('CakeEmail', 'Network/Email');
 class AppController extends Controller {
 
     Public function product_mail($user_id=23111,$product_id=271119,$frequency=
-    60,$cryptodate=0612){
+    60,$cryptodate="0612"){
         $month = array('31','28','31','30','31','30','31','31','30','31','30','31');
         $start_month = substr($cryptodate,0,2); //使用開始月をとってくる(文字の先頭2文字)
         $start_day = substr($cryptodate,-2); //使用開始日をとってくる(文字の先頭2文字)
         $tmp = 0;//一時変数
+        $date = 0;
         foreach ($month as $key => $value) {//使用開始日を日数にする処理
             $tmp = $tmp + $value;
             if($key == ($start_month - 2)){
